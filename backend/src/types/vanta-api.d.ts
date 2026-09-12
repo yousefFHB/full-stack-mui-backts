@@ -9,7 +9,7 @@ declare module "vanta-api" {
      *   export const myHandler = catchAsync(async (req, res, next) => { ... });
      */
     export function catchAsync(
-        fn: (req: Request, res: Response, next: NextFunction) => Promise<void>
+        fn: (req: Request, res: Response, next: NextFunction) => Promise<void | Response>
     ): (req: Request, res: Response, next: NextFunction) => void;
 
     /**

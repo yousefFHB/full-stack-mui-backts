@@ -23,6 +23,6 @@ const options = {
             bearerAuth: []
         }]
     },
-    apis: ['./src/Modules/**/docs.ts']
+    apis: ['./src/Modules/**/docs.ts', './dist/Modules/**/docs.js']
 }
 export const swaggerSpec = swaggerJSDoc(options);

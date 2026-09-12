@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "seed": "tsx src/utils/seed.ts",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -36,6 +37,8 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "^22.20.2",
-    "@types/swagger-jsdoc": "^6.0.4"
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "tsx": "^4.23.13"
   }
 }

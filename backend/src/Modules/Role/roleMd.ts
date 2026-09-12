@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IRole } from "../../types/role.types.js";
+import "../Permission/permissionMd.js";
 
 const roleSchema = new Schema<IRole>(
     {
