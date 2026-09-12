@@ -9,6 +9,7 @@ import {
   Tab,
   Alert,
   CircularProgress,
+  LinearProgress,
   IconButton,
   InputAdornment,
   Fade,
@@ -262,14 +263,28 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
   };
 
   return (
-    <Container maxWidth="xs" sx={{ py: { xs: 4, sm: 8 } }}>
-      <Box sx={{ ...glassCardSx, p: { xs: 3, sm: 4.5 } }}>
+    <Container maxWidth="xs" sx={{ py: { xs: 3, sm: 6, md: 8 }, px: { xs: 2, sm: 3 } }}>
+      <Box sx={{ ...glassCardSx, p: { xs: 2.5, sm: 4 }, position: "relative", overflow: "hidden" }}>
+        {/* Loading Progress Bar across top edge */}
+        {loading && (
+          <LinearProgress
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 3,
+              zIndex: 10,
+            }}
+          />
+        )}
+
         {/* Header Branding */}
-        <Box sx={{ textAlign: "center", mb: 3 }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 2, sm: 3 } }}>
           <Box
             sx={{
-              width: 48,
-              height: 48,
+              width: 46,
+              height: 46,
               mx: "auto",
               mb: 1.5,
               borderRadius: 3,
@@ -281,12 +296,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
               boxShadow: "0 6px 16px rgba(37, 99, 235, 0.35)",
             }}
           >
-            <ShieldIcon sx={{ fontSize: 26 }} />
+            <ShieldIcon sx={{ fontSize: 24 }} />
           </Box>
-          <Typography variant="h5" component="h1" sx={{ fontWeight: 700, color: "#0f172a" }}>
+          <Typography variant="h5" component="h1" sx={{ fontWeight: 700, color: "#0f172a", fontSize: { xs: "1.3rem", sm: "1.5rem" } }}>
             Welcome Back
           </Typography>
-          <Typography variant="body2" sx={{ color: "#64748b", mt: 0.5 }}>
+          <Typography variant="body2" sx={{ color: "#64748b", mt: 0.5, fontSize: { xs: "0.8rem", sm: "0.875rem" } }}>
             Minimalist & Secure Authentication
           </Typography>
         </Box>
@@ -297,7 +312,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
           onChange={handleModeChange}
           variant="fullWidth"
           sx={{
-            minHeight: 40,
+            minHeight: 38,
             mb: 3,
             background: "rgba(241, 245, 249, 0.7)",
             borderRadius: 2.5,
@@ -315,9 +330,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
             value="smart"
             sx={{
               textTransform: "none",
-              fontSize: "0.85rem",
+              fontSize: { xs: "0.78rem", sm: "0.85rem" },
               fontWeight: 600,
-              minHeight: 36,
+              minHeight: 34,
+              minWidth: 0,
+              px: { xs: 0.5, sm: 1.5 },
               zIndex: 1,
               borderRadius: 2,
               color: mode === "smart" ? "#ffffff !important" : "#475569",
@@ -329,9 +346,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
             value="password"
             sx={{
               textTransform: "none",
-              fontSize: "0.85rem",
+              fontSize: { xs: "0.78rem", sm: "0.85rem" },
               fontWeight: 600,
-              minHeight: 36,
+              minHeight: 34,
+              minWidth: 0,
+              px: { xs: 0.5, sm: 1.5 },
               zIndex: 1,
               borderRadius: 2,
               color: mode === "password" ? "#ffffff !important" : "#475569",
@@ -343,9 +362,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onSuccess, onNavigateHome })
             value="reset"
             sx={{
               textTransform: "none",
-              fontSize: "0.85rem",
+              fontSize: { xs: "0.78rem", sm: "0.85rem" },
               fontWeight: 600,
-              minHeight: 36,
+              minHeight: 34,
+              minWidth: 0,
+              px: { xs: 0.5, sm: 1.5 },
               zIndex: 1,
               borderRadius: 2,
               color: mode === "reset" ? "#ffffff !important" : "#475569",

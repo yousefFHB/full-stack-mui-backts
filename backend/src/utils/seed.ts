@@ -105,12 +105,11 @@ export async function seedDatabase() {
 
     // ── 3. Seed Initial Admin User ──────────────────────────────────
     console.log("\nChecking initial administrator user...");
-    const isProduction = process.env.NODE_ENV === "production";
-    const adminPhone = process.env.ADMIN_PHONE || (isProduction ? undefined : "09120000000");
-    const adminRawPassword = process.env.ADMIN_PASSWORD || (isProduction ? undefined : "Admin12345!");
+    const adminPhone = process.env.ADMIN_PHONE;
+    const adminRawPassword = process.env.ADMIN_PASSWORD;
 
     if (!adminPhone || !adminRawPassword) {
-      console.warn("⚠️  ADMIN_PHONE or ADMIN_PASSWORD not configured in production environment variables. Skipping admin user creation.");
+      console.warn("⚠️  ADMIN_PHONE or ADMIN_PASSWORD not configured in .env. Skipping admin user creation.");
     } else {
       let adminUser = await User.findOne({ phoneNumber: adminPhone });
 
@@ -125,13 +124,12 @@ export async function seedDatabase() {
           avatar: [],
           role: adminRole._id,
         });
-        console.log("✅ Created initial Admin user:");
+        console.log("✅ Created initial Admin user from environment variables:");
         console.log(`   Phone: ${adminPhone}`);
-        console.log(`   Password: ${isProduction ? "[REDACTED]" : adminRawPassword}`);
         console.log("   Role:  admin");
       } else {
         // Idempotent safety: do NOT overwrite the admin's password if they already exist
-        console.log(`ℹ️  Admin user (${adminPhone}) already exists. Existing credentials preserved.`);
+        console.log(`ℹ️  Admin user (${adminPhone}) already exists in database. Existing credentials preserved.`);
       }
     }
 

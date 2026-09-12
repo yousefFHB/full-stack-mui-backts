@@ -33,8 +33,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         <Box
           sx={{
             ...glassNavSx,
-            px: { xs: 2, sm: 3 },
-            py: 1.5,
+            px: { xs: 1.5, sm: 3 },
+            py: { xs: 1, sm: 1.5 },
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -46,16 +46,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: 1.5,
+              gap: { xs: 1, sm: 1.5 },
               cursor: "pointer",
               userSelect: "none",
             }}
           >
             <Box
               sx={{
-                width: 38,
-                height: 38,
-                borderRadius: 2.5,
+                width: { xs: 32, sm: 38 },
+                height: { xs: 32, sm: 38 },
+                borderRadius: 2,
                 background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
                 display: "flex",
                 alignItems: "center",
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 boxShadow: "0 4px 12px rgba(37, 99, 235, 0.35)",
               }}
             >
-              <ShieldIcon sx={{ fontSize: 22 }} />
+              <ShieldIcon sx={{ fontSize: { xs: 18, sm: 22 } }} />
             </Box>
             <Box>
               <Typography
@@ -74,6 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                   letterSpacing: -0.5,
                   color: "#0f172a",
                   lineHeight: 1.2,
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
                 }}
               >
                 RBAC Platform
@@ -85,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           </Box>
 
           {/* Navigation Links */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 0.5, sm: 1 } }}>
             <Button
               size="small"
               onClick={() => onNavigate("home")}
@@ -94,7 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 fontWeight: currentView === "home" ? 700 : 500,
                 background: currentView === "home" ? "rgba(37, 99, 235, 0.08)" : "transparent",
                 borderRadius: 2,
-                px: 2,
+                px: { xs: 1.2, sm: 2 },
+                fontSize: { xs: "0.8rem", sm: "0.875rem" },
                 textTransform: "none",
                 "&:hover": {
                   background: "rgba(37, 99, 235, 0.12)",
@@ -112,7 +114,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 fontWeight: currentView === "roles" ? 700 : 500,
                 background: currentView === "roles" ? "rgba(37, 99, 235, 0.08)" : "transparent",
                 borderRadius: 2,
-                px: 2,
+                px: { xs: 1.2, sm: 2 },
+                fontSize: { xs: "0.8rem", sm: "0.875rem" },
                 textTransform: "none",
                 "&:hover": {
                   background: "rgba(37, 99, 235, 0.12)",
@@ -124,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
 
             {/* Auth Actions */}
             {isAuthenticated ? (
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1, ml: 1 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 0.5, sm: 1 }, ml: { xs: 0.5, sm: 1 } }}>
                 <Chip
                   icon={<UserIcon sx={{ fontSize: 16 }} />}
                   label={`${user?.phoneNumber || "User"} (${getRoleDisplayName()})`}
@@ -142,13 +145,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                   size="small"
                   color="error"
                   variant="outlined"
-                  startIcon={<LogoutIcon sx={{ fontSize: 18 }} />}
+                  startIcon={<LogoutIcon sx={{ fontSize: { xs: 16, sm: 18 } }} />}
                   onClick={handleLogout}
                   sx={{
                     borderRadius: 2,
                     textTransform: "none",
                     borderColor: "rgba(239, 68, 68, 0.3)",
-                    px: 1.5,
+                    px: { xs: 1, sm: 1.5 },
+                    fontSize: { xs: "0.78rem", sm: "0.85rem" },
                   }}
                 >
                   Logout
@@ -160,9 +164,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 variant="contained"
                 onClick={() => onNavigate("auth")}
                 sx={{
-                  ml: 1,
+                  ml: { xs: 0.5, sm: 1 },
                   borderRadius: 2,
-                  px: 2.5,
+                  px: { xs: 1.5, sm: 2.5 },
+                  fontSize: { xs: "0.8rem", sm: "0.875rem" },
                   textTransform: "none",
                   fontWeight: 600,
                   background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",

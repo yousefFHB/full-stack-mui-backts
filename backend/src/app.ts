@@ -9,6 +9,8 @@ import { catchError } from "vanta-api";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./utils/Swagger.js";
 import authRouter from "./Modules/Auth/auth.js";
+import roleRouter from "./Modules/Role/role.js";
+import permissionRouter from "./Modules/Permission/permission.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -46,6 +48,8 @@ app.use(exportValidation);
 
 
 app.use("/api/auth", authRouter);
+app.use("/api/roles", roleRouter);
+app.use("/api/permissions", permissionRouter);
 
 // 404 Not Found Handler
 app.use((_req: Request, res: Response) => {
