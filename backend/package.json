@@ -8,6 +8,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "seed": "tsx src/utils/seed.ts",
+    "postinstall": "node -e \"import fs from 'node:fs'; if (fs.existsSync('src/types/vanta-api.d.ts') && fs.existsSync('node_modules/vanta-api')) { fs.copyFileSync('src/types/vanta-api.d.ts', 'node_modules/vanta-api/index.d.ts'); console.log('vanta-api TypeScript declaration patched successfully.'); }\"",
     "start": "node dist/server.js"
   },
   "keywords": [],
